@@ -19,14 +19,12 @@ public class ApiServiceImpl implements ApiService {
      * TODO: When adding additional API calls, refactor this method. Extract/Create at least one private method that
      * handles the API call + JSON conversion (so that you do not have duplicate code across multiple API calls)
      *
-     * @return `getLights` response JSON object
-     * @throws IOException Throws if the request could not be completed successfully
      */
-    @Override
-    public JSONObject getLights() throws IOException
+
+    private JSONObject getAPICall(String getUrl) throws IOException
     {
         // Connect to the server
-        URL url = new URL("https://balanced-civet-91.hasura.app/api/rest/getLights");
+        URL url = new URL(getUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         // and send a GET request
         connection.setRequestMethod("GET");
@@ -52,5 +50,21 @@ public class ApiServiceImpl implements ApiService {
         String jsonText = sb.toString();
         // Convert response into a json object
         return new JSONObject(jsonText);
+    }
+
+
+     /* @return `getLights` response JSON object
+     * @throws IOException Throws if the request could not be completed successfully
+     */
+    @Override
+    public JSONObject getLights() throws IOException
+    {
+        return getAPICall("https://balanced-civet-91.hasura.app/api/rest/getLights");
+    }
+
+    @Override
+    public JSONObject getLight(int id) throws IOException
+    {
+        return getAPICall("https://balanced-civet-91.hasura.app/api/rest/lights/"+id);
     }
 }
