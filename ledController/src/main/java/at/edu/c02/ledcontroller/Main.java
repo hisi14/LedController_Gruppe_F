@@ -85,6 +85,10 @@ public class Main {
 
                 ledController.setLedColor(id,color);
             }
+
+            if (input.equalsIgnoreCase("spinningWheel"))
+                ledController.spinningWheel(5);
+
         }
     }
 }
