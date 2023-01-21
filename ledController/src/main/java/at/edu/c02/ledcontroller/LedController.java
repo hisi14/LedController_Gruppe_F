@@ -3,9 +3,9 @@ package at.edu.c02.ledcontroller;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface LedController {
     void demo() throws IOException;
-
-    public ArrayList<String> getGroupLed = null;
+    ArrayList<String> getGroupLed(Integer id) throws IOException;
 }

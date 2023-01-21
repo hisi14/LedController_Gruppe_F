@@ -32,29 +32,56 @@ public class LedControllerImpl implements LedController {
         System.out.println("First light color is: " + firstLight.getString("color"));
 
         //verschachtelt
-        String groupName = GetGroupName(firstLight);
+        String groupName = getGroupName(firstLight);
         System.out.println("Gruppe ist: " + groupName);
     }
 
-    public ArrayList<String> getGroupLed() throws IOException
+    @Override
+    public ArrayList<String> getGroupLed(Integer id) throws IOException
     {
         JSONObject response = apiService.getLights();
         JSONArray lights = response.getJSONArray("lights");
         ArrayList<String> lightsList = new ArrayList<>();
 
-        for (int i = 0; i < lights.length(); i++)
+        if (id == null)
         {
-            JSONObject light = lights.getJSONObject(i);
-            String groupName = GetGroupName(light);
+            for (int i = 0; i < lights.length(); i++)
+            {
+                JSONObject light = lights.getJSONObject(i);
+                String groupName = getGroupName(light);
 
-            if (groupName.equals("F"))
-                lightsList.add(light.getString("state"));
+                if (groupName.equals("F"))
+                    lightsList.add(getLightDetails(light));
+            }
+        }
+        else
+        {
+            for (int i = 0; i < lights.length(); i++)
+            {
+                JSONObject light = lights.getJSONObject(i);
+                String groupName = getGroupName(light);
+
+                if (groupName.equals("F") && light.getInt("id") == id)
+                    lightsList.add(getLightDetails(light));
+            }
         }
 
         return lightsList;
     }
 
-    private String GetGroupName(JSONObject light)
+    private String getLightDetails(JSONObject light)
+    {
+            String OnOffString = new String();
+
+            if (light.getBoolean("on"))
+                OnOffString = "on";
+            else
+                OnOffString = "off";
+
+            return "LED " + light.getInt("id") + " is currently " + OnOffString + ". Color " + light.getString("color");
+    }
+
+    private String getGroupName(JSONObject light)
     {
         JSONObject groupByGroup = light.getJSONObject("groupByGroup");
         return groupByGroup.getString("name");
