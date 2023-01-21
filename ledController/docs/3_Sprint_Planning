@@ -1,0 +1,8 @@
+SPN 03
+
+Stories für Umsetzung:
+    -2.2 (15 min, aus vorherigem Sprint übernommen) --> Lukas Lahovnik, Simon Unterluggauer
+    -2.3 (30 min) --> Florian Lirzer, Lukas Lahovnik, Simon Unterluggauer
+
+Abhängigkeiten:
+    -2.3 abhängig von 2.2 aufgrund der Ausschaltfunktion aller Leds
