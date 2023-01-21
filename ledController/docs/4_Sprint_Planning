@@ -5,6 +5,6 @@ Stories für Umsetzung:
     -3.1 (45 min) --> Florian Lirzer, Simon Unterluggauer
     -3.2 (35 min) --> Lukas Lahovnik
     -3.3 (25 min) --> Lukas Lahvonkik
-    -Tests für alle Funktionen erstellen (Grund: limitierte Anzahl an API Calls)
+    -Tests für Funktionen erstellen (Grund: limitierte Anzahl an API Calls)
 
 Abhängigkeiten:
