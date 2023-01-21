@@ -1,0 +1,10 @@
+SPN 04
+
+Stories für Umsetzung:
+    -2.4 (10 min) --> Lukas Lahovnik
+    -3.1 (45 min) --> Florian Lirzer, Simon Unterluggauer
+    -3.2 (35 min) --> Lukas Lahovnik
+    -3.3 (25 min) --> Lukas Lahvonkik
+    -Tests für Funktionen erstellen (Grund: limitierte Anzahl an API Calls)
+
+Abhängigkeiten:
