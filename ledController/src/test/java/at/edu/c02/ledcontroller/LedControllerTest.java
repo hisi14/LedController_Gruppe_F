@@ -57,4 +57,15 @@ public class LedControllerTest {
         verify(apiService).getLights();
         verifyNoMoreInteractions(apiService);
     }
+
+    @Test
+    public void turnOffAllLeds() throws IOException
+    {
+        ApiServiceImpl apiService = mock(ApiServiceImpl.class);
+        when(apiService.getLights()).thenReturn(lights);
+        LedControllerImpl ledController = new LedControllerImpl(apiService);
+        ledController.turnOffAllLeds();
+        verify(apiService).getLights();
+        verifyNoMoreInteractions(apiService);
+    }
 }
