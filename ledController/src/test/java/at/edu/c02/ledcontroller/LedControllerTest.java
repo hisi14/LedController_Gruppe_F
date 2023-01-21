@@ -107,5 +107,20 @@ public class LedControllerTest {
         verifyNoMoreInteractions(apiService);
     }
 
+    @Test
+    public void spinningWheel() throws IOException, InterruptedException
+    {
+        ApiServiceImpl apiService = mock(ApiServiceImpl.class);
+        when(apiService.getLights()).thenReturn(lights);
+        LedControllerImpl ledController = new LedControllerImpl(apiService);
+        ledController.spinningWheel(1);
+        verify(apiService, times(2)).getLights();
+        verify(apiService).setLight(5, "#fff", false);
+        verify(apiService).setLight(5, "#ff0", true);
+
+        verifyNoMoreInteractions(apiService);
+    }
+
+
 
 }
