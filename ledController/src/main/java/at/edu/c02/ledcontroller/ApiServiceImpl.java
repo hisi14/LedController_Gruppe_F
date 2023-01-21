@@ -27,7 +27,7 @@ public class ApiServiceImpl implements ApiService {
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         // and send a GET request
         connection.setRequestMethod(method.toUpperCase());
-        connection.setRequestProperty("X-Hasura-Group-ID", "e3b0c44298fc1c149afbf4c8996fb");
+        setSecret(connection);
         if(method.equals("PUT"))
         {
             connection.setDoOutput(true);
@@ -103,5 +103,17 @@ public class ApiServiceImpl implements ApiService {
         System.out.println(jsonInputString);
 
         putApi(url,jsonInputString);
+    }
+
+    public void setSecret(HttpURLConnection connection) throws IOException
+    {
+        String secret = new String();
+        File file = new File("secret.txt");
+        FileReader fl = new FileReader(file);
+        BufferedReader br = new BufferedReader(fl);
+
+        String line;
+        line = br.readLine();
+        connection.setRequestProperty("X-Hasura-Group-ID", line);
     }
 }
