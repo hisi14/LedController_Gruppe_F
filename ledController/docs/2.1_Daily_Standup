@@ -1,7 +1,7 @@
 Daily Standup 1:
 
 Lukas Lahovnik:
-Arbeiten laufen nach Plan, leichte Probleme mit dem ersten Post Aufruf des API-Calls für Issue 2.1
+Arbeiten laufen nach Plan, leichte Probleme mit dem ersten PUT Aufruf des API-Calls für Issue 2.1
 
 Simon Unterluggauer:
 Issue 1.3 fast fertig, es fehlt nur noch letzer Punkt der Story
@@ -13,13 +13,10 @@ Derzeit keine Probleme
 Daily Standup 2:
 
 Lukas Lahovnik:
-Arbeiten den den Issues laufen nach Plan.
+Derzeit noch immer Probleme mit API Call PUT, Lösung durch Hilfe von Lektor gefunden
 
 Simon Unterluggauer:
-Arbeiten den den Issues laufen nach Plan.
+Issue 1.3 fertiggestellt --> weitermachen mit Issue 2.2 sobald 2.1 fertig
 
 Florian Lirzer:
-Leicthe Probleme mit der Test Erstellung:
-    - Probleme mit erstellen des Mock Objekts für ApiService (Hilfe durch Lektor)
-    - Schwierigkeiten mit Erstellung des Mock JsonObjects --> durch Internetrecherche gelöst
-Lukas unterstützt nachdem seine Issues fertigt gestellt wurden
+Unterstützende Arbeiten bei den anderen Projektmitgliedern nächster Punkt Test für 2.1 und 2.2
