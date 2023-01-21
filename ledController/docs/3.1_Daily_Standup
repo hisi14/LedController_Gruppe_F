@@ -1,0 +1,24 @@
+Daily Standup 1:
+
+Lukas Lahovnik:
+Issue 2.2 fertiggestellt, 2.3 schaltet Lichter falsch ein und aus hier muss noch weiter an einer
+Lösung gearbeitet werden --> weitere Test nötig derzeit Response 429 (too many requests)
+
+Simon Unterluggauer:
+Issue 2.2 fertiggestellt, 2.5 vorerst mit if implementiert sollte noch auf switch case geändert werden (wegen Zeitplan
+vorerst einfache Implementierung)
+
+Florian Lirzer:
+Schreiben des DailyStandups Dokuments, 2.2 PR Review und Merge (alle Anforderungen erfüllt), Test für 2.2
+erfolgreich implementiert
+---------------------------------------------------------
+Daily Standup 2:
+
+Lukas Lahovnik:
+Funktion für Lauflicht implementiert Branch an Florian Lirzer für Testerstellung übergeben --> Hilfe bei Testerstellung
+
+Simon Unterluggauer:
+Issue 2.5 fertig implementiert --> Hilfe bei Issue 2.3 (Testimplementierung)
+
+Florian Lirzer:
+Testerstellung begonnen für Issue 2.3

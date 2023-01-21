@@ -70,4 +70,20 @@ public class LedControllerTest {
         verify(apiService).setLight(5, "#fff", false);
         verifyNoMoreInteractions(apiService);
     }
+
+    @Test
+    public void lauflicht() throws IOException, InterruptedException
+    {
+        ApiServiceImpl apiService = mock(ApiServiceImpl.class);
+        when(apiService.getLights()).thenReturn(lights);
+        LedControllerImpl ledController = new LedControllerImpl(apiService);
+        ledController.lauflicht("#f0f", 1);
+        verify(apiService, times(2)).getLights();
+        verify(apiService).setLight(5, "#fff", false);
+
+        verify(apiService).setLight(5, "#f0f", true);
+        verify(apiService).setLight(5, "#f0f", false);
+        verifyNoMoreInteractions(apiService);
+
+    }
 }
