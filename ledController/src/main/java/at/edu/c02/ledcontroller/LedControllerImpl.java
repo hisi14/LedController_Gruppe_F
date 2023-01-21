@@ -102,4 +102,10 @@ public class LedControllerImpl implements LedController {
                 apiService.setLight(light.getInt("id"), light.getString("color"), false);
         }
     }
+
+    @Override
+    public void setLedColor(int id, String color) throws IOException
+    {
+        apiService.setLight(id, color, true);
+    }
 }
