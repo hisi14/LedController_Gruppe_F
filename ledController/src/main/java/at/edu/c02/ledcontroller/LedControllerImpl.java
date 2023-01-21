@@ -4,6 +4,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 /**
  * This class handles the actual logic
@@ -30,8 +32,31 @@ public class LedControllerImpl implements LedController {
         System.out.println("First light color is: " + firstLight.getString("color"));
 
         //verschachtelt
-        JSONObject groupByGroup = firstLight.getJSONObject("groupByGroup");
-        String groupName = groupByGroup.getString("name");
+        String groupName = GetGroupName(firstLight);
         System.out.println("Gruppe ist: " + groupName);
+    }
+
+    public ArrayList<String> getGroupLed() throws IOException
+    {
+        JSONObject response = apiService.getLights();
+        JSONArray lights = response.getJSONArray("lights");
+        ArrayList<String> lightsList = new ArrayList<>();
+
+        for (int i = 0; i < lights.length(); i++)
+        {
+            JSONObject light = lights.getJSONObject(i);
+            String groupName = GetGroupName(light);
+
+            if (groupName.equals("F"))
+                lightsList.add(light.getString("state"));
+        }
+
+        return lightsList;
+    }
+
+    private String GetGroupName(JSONObject light)
+    {
+        JSONObject groupByGroup = light.getJSONObject("groupByGroup");
+        return groupByGroup.getString("name");
     }
 }
