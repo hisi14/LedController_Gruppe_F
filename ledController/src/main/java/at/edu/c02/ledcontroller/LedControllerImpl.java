@@ -99,7 +99,6 @@ public class LedControllerImpl implements LedController {
             JSONObject light = lights.getJSONObject(i);
             String groupName = getGroupName(light);
 
-            System.out.println(light.getInt("id"));
             if (groupName.equals("F"))
                 apiService.setLight(light.getInt("id"), light.getString("color"), false);
         }
@@ -119,13 +118,16 @@ public class LedControllerImpl implements LedController {
 
                 if (groupName.equals("F"))
                 {
-                    System.out.println("Schalte licht um");
+                    //System.out.println("Schalte licht um");
                     apiService.setLight(light.getInt("id"), color, true);
                     Thread.sleep(5000);
                     apiService.setLight(light.getInt("id"), color, false);
                 }
             }
         }
+
+        turnOffAllLeds();
+        System.out.println("spinning led effect done");
     }
 
     @Override

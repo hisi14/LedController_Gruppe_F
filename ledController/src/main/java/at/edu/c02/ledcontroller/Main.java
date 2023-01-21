@@ -23,6 +23,8 @@ public class Main {
             System.out.println("Enter 'groupstatus' to get status of LEDs");
             System.out.println("Enter 'status' to get status of one LED");
             System.out.println("Enter 'setled' to set the color for one LED");
+            System.out.println("Enter 'spinningled' to spin the leds around the clock");
+            System.out.println("Enter 'turnoffall' to turn of all leds");
             System.out.println("Enter 'exit' to exit the program");
             input = reader.readLine();
 
@@ -31,10 +33,22 @@ public class Main {
                 ledController.demo();
             }
 
-            if(input.equalsIgnoreCase("lauflicht"))
-                ledController.lauflicht("#f0f", 3);
+            if(input.equalsIgnoreCase("spinningled"))
+            {
+                String color;
+                int nrTurns;
 
-            if(input.equalsIgnoreCase("off"))
+                System.out.println("How many turns?");
+                nrTurns = Integer.parseInt(reader.readLine());
+
+                System.out.println("Which color?");
+                color = reader.readLine();
+
+                System.out.println("Starting spinning led effect....");
+                ledController.lauflicht(color, nrTurns);
+            }
+
+            if(input.equalsIgnoreCase("turnoffall"))
                 ledController.turnOffAllLeds();
 
             if (input.equalsIgnoreCase("groupstatus"))

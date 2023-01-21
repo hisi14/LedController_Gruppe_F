@@ -100,8 +100,7 @@ public class ApiServiceImpl implements ApiService {
     {
         String url = "https://balanced-civet-91.hasura.app/api/rest/setLight";
         String jsonInputString = "{\"id\":" +id + ",\"color\":\"" +color + "\",\"state\":" + on + "}";
-        System.out.println(jsonInputString);
-
+        //System.out.println(jsonInputString);
         putApi(url,jsonInputString);
     }
 }
