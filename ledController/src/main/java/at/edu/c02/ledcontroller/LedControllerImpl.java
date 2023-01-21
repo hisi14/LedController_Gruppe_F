@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 /**
  * This class handles the actual logic
@@ -98,8 +99,32 @@ public class LedControllerImpl implements LedController {
             JSONObject light = lights.getJSONObject(i);
             String groupName = getGroupName(light);
 
+            System.out.println(light.getInt("id"));
             if (groupName.equals("F"))
                 apiService.setLight(light.getInt("id"), light.getString("color"), false);
+        }
+    }
+
+    @Override
+    public void lauflicht(String color, int turns) throws IOException, InterruptedException
+    {
+        turnOffAllLeds();
+        JSONObject response = apiService.getLights();
+        JSONArray lights = response.getJSONArray("lights");
+
+        for (int i = 0; i < turns; i++) {
+            for (int j = 0; j < lights.length(); j++) {
+                JSONObject light = lights.getJSONObject(j);
+                String groupName = getGroupName(light);
+
+                if (groupName.equals("F"))
+                {
+                    System.out.println("Schalte licht um");
+                    apiService.setLight(light.getInt("id"), color, true);
+                    Thread.sleep(5000);
+                    apiService.setLight(light.getInt("id"), color, false);
+                }
+            }
         }
     }
 }
