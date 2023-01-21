@@ -1,0 +1,15 @@
+SPN 01
+
+
+Stories für Umsetzung:
+    -1.1 (20 min) --> Lukas Lahvonik, Simon Unterluggauer, Florian Lirzer
+    -1.2 (10 min) --> Lukas Lahovnik, Florian Lirzer
+    -1.3 (15 min) --> Lukas Lahovnik, Simon Unterluggauer
+
+
+Abhängigkeiten:
+    -1.2 abhängig von 1.1
+    -1.3 abhängig von 1.2
+
+
+
