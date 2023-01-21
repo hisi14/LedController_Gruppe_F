@@ -53,7 +53,7 @@ public class LedControllerTest {
         ApiServiceImpl apiService = mock(ApiServiceImpl.class);
         when(apiService.getLights()).thenReturn(lights);
         LedControllerImpl ledController = new LedControllerImpl(apiService);
-        ledController.getGroupLed();
+        ledController.getGroupLed(null);
         verify(apiService).getLights();
         verifyNoMoreInteractions(apiService);
     }
