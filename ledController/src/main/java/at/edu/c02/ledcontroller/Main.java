@@ -10,7 +10,8 @@ public class Main {
     /**
      * This is the main program entry point. TODO: add new commands when implementing additional features.
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException
+    {
         LedController ledController = new LedControllerImpl(new ApiServiceImpl());
 
         String input = "";
@@ -29,6 +30,12 @@ public class Main {
             {
                 ledController.demo();
             }
+
+            if(input.equalsIgnoreCase("lauflicht"))
+                ledController.lauflicht("#f0f", 3);
+
+            if(input.equalsIgnoreCase("off"))
+                ledController.turnOffAllLeds();
 
             if (input.equalsIgnoreCase("groupstatus"))
             {

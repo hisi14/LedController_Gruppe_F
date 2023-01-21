@@ -9,5 +9,6 @@ public interface LedController {
     void demo() throws IOException;
     ArrayList<String> getGroupLed(Integer id) throws IOException;
     void turnOffAllLeds() throws IOException;
+    void lauflicht(String color, int turns) throws IOException, InterruptedException;
     void setLedColor(int id, String color) throws IOException;
 }
