@@ -28,5 +28,10 @@ public class LedControllerImpl implements LedController {
         // read int and string properties of the light
         System.out.println("First light id is: " + firstLight.getInt("id"));
         System.out.println("First light color is: " + firstLight.getString("color"));
+
+        //verschachtelt
+        JSONObject groupByGroup = firstLight.getJSONObject("groupByGroup");
+        String groupName = groupByGroup.getString("name");
+        System.out.println("Gruppe ist: " + groupName);
     }
 }
