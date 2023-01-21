@@ -169,4 +169,20 @@ public class LedControllerImpl implements LedController {
         }
 
     }
+
+    @Override
+    public void turnOnAllLeds(String color) throws IOException
+    {
+        JSONObject response = apiService.getLights();
+        JSONArray lights = response.getJSONArray("lights");
+
+        for (int i = 0; i < lights.length(); i++)
+        {
+            JSONObject light = lights.getJSONObject(i);
+            String groupName = getGroupName(light);
+
+            if (groupName.equals("F"))
+                apiService.setLight(light.getInt("id"), color, true);
+        }
+    }
 }

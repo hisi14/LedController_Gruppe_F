@@ -22,7 +22,8 @@ public class Main {
             System.out.println("Enter 'status' to get status of one LED");
             System.out.println("Enter 'setled' to set the color for one LED");
             System.out.println("Enter 'spinningled' to spin the leds around the clock");
-            System.out.println("Enter 'turnoffall' to turn of all leds");
+            System.out.println("Enter 'turnoffall' to turn off all leds");
+            System.out.println("Enter 'turnonall' to turn on all leds");
             System.out.println("Enter 'spinningwheel' to spin the current leds");
             System.out.println("Enter 'exit' to exit the program");
             input = reader.readLine();
@@ -94,6 +95,16 @@ public class Main {
 
                 System.out.println("Starting Spinning Wheel effect....");
                 ledController.spinningWheel(steps);
+            }
+
+            if (input.equalsIgnoreCase("turnonall"))
+            {
+                String color;
+
+                System.out.println("Which color?");
+                color = reader.readLine();
+
+                ledController.turnOnAllLeds(color);
             }
         }
     }
