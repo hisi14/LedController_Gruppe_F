@@ -20,6 +20,14 @@ public class LedControllerTest {
      * Take a look at the stack calculator tests again if you are unsure where to start.
      */
 
+
+    @Test
+    public void EndToEndSetLight() throws IOException
+    {
+        ApiServiceImpl apiService = new ApiServiceImpl();
+        apiService.setLight(1,"#f0f",true);
+    }
+
     JSONObject lights = new JSONObject();
 
     @Before
