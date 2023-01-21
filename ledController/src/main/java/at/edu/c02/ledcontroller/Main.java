@@ -22,6 +22,7 @@ public class Main {
             System.out.println("Enter 'demo' to send a demo request");
             System.out.println("Enter 'groupstatus' to get status of LEDs");
             System.out.println("Enter 'status' to get status of one LED");
+            System.out.println("Enter 'setled' to set the color for one LED");
             System.out.println("Enter 'exit' to exit the program");
             input = reader.readLine();
 
@@ -55,6 +56,20 @@ public class Main {
                 id = Integer.parseInt(reader.readLine());
 
                 System.out.println(ledController.getGroupLed(id));
+            }
+
+            if (input.equalsIgnoreCase("setled"))
+            {
+                int id;
+                String color;
+
+                System.out.println("Which LED?");
+                id = Integer.parseInt(reader.readLine());
+
+                System.out.println("Which color?");
+                color = reader.readLine();
+
+                ledController.setLedColor(id,color);
             }
         }
     }
