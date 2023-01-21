@@ -20,6 +20,9 @@ public class LedControllerTest {
      * Take a look at the stack calculator tests again if you are unsure where to start.
      */
 
+
+    JSONObject lights = new JSONObject();
+
     @Before
     public void initalize()
     {
@@ -39,14 +42,15 @@ public class LedControllerTest {
     }
 
     @Test
-    public void EndToEndSetLight() throws IOException
+    public void getLight() throws IOException
     {
-        ApiServiceImpl apiService = new ApiServiceImpl();
-        apiService.setLight(1,"#f0f",true);
+        ApiServiceImpl apiService = mock(ApiServiceImpl.class);
+        when(apiService.getLights()).thenReturn(lights);
+        LedControllerImpl ledController = new LedControllerImpl(apiService);
+        ledController.getGroupLed(1);
+        verify(apiService).getLights();
+        verifyNoMoreInteractions(apiService);
     }
-
-    JSONObject lights = new JSONObject();
-
 
     @Test
     public void getGroupLeds() throws IOException
@@ -58,6 +62,23 @@ public class LedControllerTest {
         verify(apiService).getLights();
         verifyNoMoreInteractions(apiService);
     }
+
+    @Test
+    public void getGroupLedsMain() throws IOException
+    {
+        ApiServiceImpl apiService = mock(ApiServiceImpl.class);
+        when(apiService.getLights()).thenReturn(lights);
+        LedControllerImpl ledController = new LedControllerImpl(apiService);
+        assertEquals("[LED 5 is currently on. Color #fff]", ledController.getGroupLed(null).toString());
+    }
+
+    @Test
+    public void EndToEndSetLight() throws IOException
+    {
+        ApiServiceImpl apiService = new ApiServiceImpl();
+        apiService.setLight(1,"#f0f",true);
+    }
+
 
     @Test
     public void turnOffAllLeds() throws IOException
@@ -78,12 +99,13 @@ public class LedControllerTest {
         when(apiService.getLights()).thenReturn(lights);
         LedControllerImpl ledController = new LedControllerImpl(apiService);
         ledController.lauflicht("#f0f", 1);
-        verify(apiService, times(2)).getLights();
-        verify(apiService).setLight(5, "#fff", false);
+        verify(apiService, times(3)).getLights();
+        verify(apiService, times(2)).setLight(5, "#fff", false);
 
         verify(apiService).setLight(5, "#f0f", true);
         verify(apiService).setLight(5, "#f0f", false);
         verifyNoMoreInteractions(apiService);
-
     }
+
+
 }
