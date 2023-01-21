@@ -135,4 +135,38 @@ public class LedControllerImpl implements LedController {
     {
         apiService.setLight(id, color, true);
     }
+
+    @Override
+    public void spinningWheel(int turns) throws IOException, InterruptedException
+    {
+        turnOffAllLeds();
+        JSONObject response = apiService.getLights();
+        JSONArray lights = response.getJSONArray("lights");
+        ArrayList<Integer> groupFIDs = new ArrayList<>();
+
+        for (int i = 0; i < lights.length(); i++) {
+            JSONObject light = lights.getJSONObject(i);
+            String groupName = getGroupName(light);
+
+            if (groupName.equals("F"))
+                groupFIDs.add(light.getInt("id"));
+        }
+
+        String evenColor = "#ff0";
+        String oddColor = "#f0f";
+
+        for (int j = 0; j < turns; j++) {
+            for (int i = 0; i < groupFIDs.size(); i++) {
+                if(i % 2 == 0)
+                    apiService.setLight(groupFIDs.get(i),evenColor, true);
+                else
+                    apiService.setLight(groupFIDs.get(i),oddColor, true);
+            }
+            Thread.sleep(4000);
+            String helper = evenColor;
+            evenColor = oddColor;
+            oddColor = helper;
+        }
+
+    }
 }
