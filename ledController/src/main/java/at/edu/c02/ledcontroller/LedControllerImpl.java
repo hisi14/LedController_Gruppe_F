@@ -86,4 +86,20 @@ public class LedControllerImpl implements LedController {
         JSONObject groupByGroup = light.getJSONObject("groupByGroup");
         return groupByGroup.getString("name");
     }
+
+    @Override
+    public void turnOffAllLeds() throws IOException
+    {
+        JSONObject response = apiService.getLights();
+        JSONArray lights = response.getJSONArray("lights");
+
+        for (int i = 0; i < lights.length(); i++)
+        {
+            JSONObject light = lights.getJSONObject(i);
+            String groupName = getGroupName(light);
+
+            if (groupName.equals("F"))
+                apiService.setLight(light.getInt("id"), light.getString("color"), false);
+        }
+    }
 }

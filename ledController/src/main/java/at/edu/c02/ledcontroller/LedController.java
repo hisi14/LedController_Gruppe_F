@@ -8,4 +8,5 @@ import java.util.HashMap;
 public interface LedController {
     void demo() throws IOException;
     ArrayList<String> getGroupLed(Integer id) throws IOException;
+    void turnOffAllLeds() throws IOException;
 }
